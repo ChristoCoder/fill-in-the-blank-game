@@ -298,7 +298,16 @@
     function provideHint() {
       if (focusedInput && focusedInput.dataset.answer) {
         const correctAnswer = focusedInput.dataset.answer;
-        focusedInput.value = correctAnswer.charAt(0); // Show the first letter as a hint
+        const currentValue = focusedInput.value;
+
+        let hintIndex = 0;
+        while (hintIndex < correctAnswer.length && currentValue[hintIndex] === correctAnswer[hintIndex]) {
+          hintIndex++;
+        }
+
+        if (hintIndex < correctAnswer.length) {
+          focusedInput.value = currentValue + correctAnswer[hintIndex]; // Show the first letter as a hint
+        }
         focusedInput.focus(); // Keep focus on the input
       }
     }
