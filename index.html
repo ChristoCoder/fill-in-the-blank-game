@@ -165,7 +165,7 @@
 
     let originalText = ''; // Stores the full text from the uploaded or preloaded file
     let focusedInput = null; // Track the currently focused input field
-    const blacklist = ['a', 'an', 'the', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 'in', 'on', 'at', 'of', 'to', 'for', 'by', 'that', 'this', 'with', 'as', 'I', 'we', 'you', 'he', 'she', 'it', 'they', '1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', 'i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const blacklist = ['a', 'an', 'the', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 'in', 'on', 'at', 'of', 'to', 'for', 'by', 'that', 'this', 'with', 'as', 'I', 'we', 'you', 'he', 'she', 'it', 'they', '1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
     fileInput.addEventListener('change', handleFile);
     difficultySelector.addEventListener('change', regenerateGame);
@@ -248,21 +248,21 @@
 
         hintButton.disabled = false; // Enable the hint button
         addEventListenersToInputs();
-}
+    }
 
-function displayTitle(title) {
-  const titleElement = document.createElement('h2');
-  titleElement.textContent = title;
-  gameContainer.prepend(titleElement); // Add the title at the top
-}
+    function displayTitle(title) {
+      const titleElement = document.createElement('h2');
+      titleElement.textContent = title;
+      gameContainer.prepend(titleElement); // Add the title at the top
+    }
 
-function isBibleReference(word) {
-  return /^\w+\s\d+:\d+(-\d+)?$/.test(word); // Matches patterns like "John 3:16" or "John 3:16-17"
-}
+    function isBibleReference(word) {
+      return /^\w+\s\d+:\d+(-\d+)?$/.test(word); // Matches patterns like "John 3:16" or "John 3:16-17"
+    }
 
-function isNumber(word) {
-  return !isNaN(word) && word.trim() !== ''; // Check if the word is a number
-}
+    function isNumber(word) {
+      return !isNaN(word) && word.trim() !== ''; // Check if the word is a number
+    }
 
     function addEventListenersToInputs() {
       const inputs = gameContainer.querySelectorAll('input[type="text"]');
